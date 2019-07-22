@@ -1501,3 +1501,43 @@
 		width: 100%;
 	}
 }
+
+
+.work-item > div.image-scroll {
+	display: flex;
+	margin-bottom: 1.5em;
+}
+.work-item .image {
+	margin: 0; 
+}
+.image-scroll {
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+	width: 100%;
+	border-radius: 5px;
+}
+.image-scroll img {
+	position: absolute;
+	transition: all 0.2s ease 0s;
+}
+
+
+.image-scroll:hover  img {  
+	-moz-animation: border-bounce 3400ms linear;
+	-webkit-animation: border-bounce 3400ms linear;
+}
+@-moz-keyframes border-bounce {
+	0%   { margin-top: -0px;  }
+	25%  { margin-top: -50px; }
+	50%  { margin-top: -0px;  }
+	75%  { margin-top: -50px;  }
+	100% { margin-top: -0px;  }
+}
+@-webkit-keyframes border-bounce {
+	0%   { margin-top: -0px;  }
+	25%  { margin-top: -50px; }
+	50%  { margin-top: -0px;  }
+	75%  { margin-top: -50px;  }
+	100% { margin-top: -0px;  }
+}

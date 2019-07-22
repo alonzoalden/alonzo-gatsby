@@ -25,19 +25,25 @@ class Gallery extends Component {
         const gallery = images.map((obj, i) => {
             return (
                 <article className="6u 12u$(xsmall) work-item" key={i}>
-                    <a
-                        className="image fit thumb"
-                        href={obj.source}
-                        onClick={e => {
-                            e.preventDefault();
-                            this.toggleLightbox(i);
-                        }}
-                    >
-                        <img src={obj.thumbnail} />
-                    </a>
+                    <div class="image-scroll">
+                        <a
+                            className="image fit thumb"
+                            href={obj.source}
+                            onClick={e => {
+                                e.preventDefault();
+                                this.toggleLightbox(i);
+                            }}
+                        >
+                            <span >
+                                <img src={obj.thumbnail} />
+                            </span>
+                        </a>
+                    </div>
 
-                    <h3>{obj.caption}</h3>
-                    <p>{obj.description}</p>
+                    <div>
+                        <h3>{obj.caption}</h3>
+                        <p>{obj.description}</p>
+                    </div>
                 </article>
             );
         });
