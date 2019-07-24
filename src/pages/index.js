@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 // import Lightbox from 'react-images'
 import Gallery from '../components/Gallery'
-
+import { FaEnvelopeOpen, FaMobileAlt } from 'react-icons/fa';
 import thumb01 from '../assets/images/thumbs/wgfs-1-small.jpeg';
 
 import thumb03 from '../assets/images/thumbs/merchant-portal-1-small.png';
@@ -115,11 +115,11 @@ class HomeIndex extends React.Component {
                                         United States
                                     </li> */}
                                     <li>
-                                        <h3 className="icon fa-mobile"><span className="label">Phone</span></h3>
+                                        <h3 className="icon"><FaMobileAlt /><span className="label">Phone</span></h3>
                                         661-488-6979
                                     </li>
                                     <li>
-                                        <h3 className="icon fa-envelope-o"><span className="label">Email</span></h3>
+                                        <h3 className="icon"><FaEnvelopeOpen /><span className="label">Email</span></h3>
                                         <a href="#">alonzoalden@gmail.com</a>
                                     </li>
                                 </ul>
