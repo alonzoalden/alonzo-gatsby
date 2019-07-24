@@ -5,27 +5,45 @@ import Layout from '../components/layout'
 // import Lightbox from 'react-images'
 import Gallery from '../components/Gallery'
 
-import thumb01 from '../assets/images/thumbs/01.jpg'
-import thumb02 from '../assets/images/thumbs/02.jpg'
-import thumb03 from '../assets/images/thumbs/03.jpg'
-import thumb04 from '../assets/images/thumbs/04.jpg'
-import thumb05 from '../assets/images/thumbs/05.jpg'
-import thumb06 from '../assets/images/thumbs/06.jpg'
+import thumb01 from '../assets/images/thumbs/wgfs-1-small.jpeg';
 
-import full01 from '../assets/images/fulls/01.jpg'
-import full02 from '../assets/images/fulls/02.jpg'
-import full03 from '../assets/images/fulls/03.jpg'
-import full04 from '../assets/images/fulls/04.jpg'
-import full05 from '../assets/images/fulls/05.jpg'
-import full06 from '../assets/images/fulls/06.jpg'
+import thumb03 from '../assets/images/thumbs/merchant-portal-1-small.png';
+import thumb04 from '../assets/images/thumbs/merchant-portal-3-small.png';
+import thumb05 from '../assets/images/thumbs/merchant-portal-2-small.png';
+import thumb06 from '../assets/images/thumbs/email-marketing-3-small.png';
+import thumb07 from '../assets/images/thumbs/email-marketing-2-small.png';
+import thumb08 from '../assets/images/thumbs/bris-biscuits-2-small.png';
+import thumb09 from '../assets/images/thumbs/bris-biscuits-1-small.png';
+import thumb10 from '../assets/images/fulls/toolots-new-ui-5-large.png';
+import thumb11 from '../assets/images/fulls/toolots-new-ui-6-large.png';
+import thumb12 from '../assets/images/fulls/toolots-new-ui-7-large.png';
+
+import full01 from '../assets/images/fulls/wgfs-1-large.jpeg';
+
+import full03 from '../assets/images/fulls/merchant-portal-1-large.png';
+import full04 from '../assets/images/fulls/merchant-portal-3-large.png';
+import full05 from '../assets/images/fulls/merchant-portal-2-large.png';
+import full06 from '../assets/images/fulls/email-marketing-3-large.png';
+import full07 from '../assets/images/fulls/email-marketing-2-large.png';
+import full08 from '../assets/images/fulls/bris-biscuits-2-large.png';
+import full09 from '../assets/images/fulls/bris-biscuits-1-large.png';
+import full10 from '../assets/images/fulls/toolots-new-ui-5-large.png';
+import full11 from '../assets/images/fulls/toolots-new-ui-6-large.png';
+import full12 from '../assets/images/fulls/toolots-new-ui-7-large.png';
 
 const DEFAULT_IMAGES = [
     { id: '1', source: full01, thumbnail: thumb01, caption: 'Photo 1', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '2', source: full02, thumbnail: thumb02, caption: 'Photo 2', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+
     { id: '3', source: full03, thumbnail: thumb03, caption: 'Photo 3', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
     { id: '4', source: full04, thumbnail: thumb04, caption: 'Photo 4', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
     { id: '5', source: full05, thumbnail: thumb05, caption: 'Photo 5', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '6', source: full06, thumbnail: thumb06, caption: 'Photo 6', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'}
+    { id: '6', source: full06, thumbnail: thumb06, caption: 'Photo 6', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+    { id: '7', source: full07, thumbnail: thumb07, caption: 'Photo 7', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+    { id: '8', source: full08, thumbnail: thumb08, caption: 'Photo 8', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+    { id: '9', source: full09, thumbnail: thumb09, caption: 'Photo 9', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+    { id: '9', source: full10, thumbnail: thumb10, caption: 'Photo 10', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+    { id: '9', source: full11, thumbnail: thumb11, caption: 'Photo 11', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+    { id: '9', source: full12, thumbnail: thumb12, caption: 'Photo 12', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
 ];
 
 class HomeIndex extends React.Component {
@@ -45,10 +63,13 @@ class HomeIndex extends React.Component {
 
                     <section id="one">
                         <header className="major">
-                            <h2>Ipsum lorem dolor aliquam ante commodo<br />
-                            magna sed accumsan arcu neque.</h2>
+                            <h2>Welcome to Alonzo's Portfolio.</h2>
                         </header>
-                        <p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p>
+                        <p>
+                            Creation is my passion and I express it through code. 
+                            I enjoy working on all aspects of web development from small business sites to large scale interactive web applications. I have experience with some of the latest dev tech, including React, Angular, Node.JS, PostgreSQL.
+                            If you believe I can be of any further assistance, please feel free to contact me.
+                        </p>
                         <ul className="actions">
                             <li><a href="#" className="button">Learn More</a></li>
                         </ul>
@@ -71,7 +92,7 @@ class HomeIndex extends React.Component {
 
                     <section id="three">
                         <h2>Get In Touch</h2>
-                        <p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
+                        <p>If you think I could be of any help, please contact me.</p>
                         <div className="row">
                             <div className="8u 12u$(small)">
                                 <form method="post" action="#">
@@ -87,19 +108,19 @@ class HomeIndex extends React.Component {
                             </div>
                             <div className="4u 12u$(small)">
                                 <ul className="labeled-icons">
-                                    <li>
+                                    {/* <li>
                                         <h3 className="icon fa-home"><span className="label">Address</span></h3>
                                         1234 Somewhere Rd.<br />
                                         Nashville, TN 00000<br />
                                         United States
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <h3 className="icon fa-mobile"><span className="label">Phone</span></h3>
-                                        000-000-0000
+                                        661-488-6979
                                     </li>
                                     <li>
                                         <h3 className="icon fa-envelope-o"><span className="label">Email</span></h3>
-                                        <a href="#">hello@untitled.tld</a>
+                                        <a href="#">alonzoalden@gmail.com</a>
                                     </li>
                                 </ul>
                             </div>
