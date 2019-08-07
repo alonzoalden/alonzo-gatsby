@@ -31,6 +31,7 @@ import full09 from '../assets/images/fulls/bris-biscuits-1-large.png';
 import full10 from '../assets/images/fulls/toolots-new-ui-5-large.png';
 import full11 from '../assets/images/fulls/toolots-new-ui-6-large.png';
 import full12 from '../assets/images/fulls/toolots-new-ui-7-large.png';
+import { timingSafeEqual } from 'crypto';
 
 const DEFAULT_IMAGES = [
     { id: '1', source: full01, thumbnail: thumb01, caption: 'Photo 1', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
@@ -48,8 +49,13 @@ const DEFAULT_IMAGES = [
 ];
 
 class HomeIndex extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {showForm: true};
+        this.response = this.response.bind(this);
+      }
+    
     response(e) {
-        console.log(e.target.email.value);
         e.preventDefault()
         const data = {
             from: e.target.email.value,
@@ -62,6 +68,13 @@ class HomeIndex extends React.Component {
             data,
             { headers: { 'Content-Type': 'application/json' } }
         )
+        .then(() => {
+            this.setState({showForm: false})
+        })
+        .catch((error) => {
+            this.setState({showForm: false})
+            console.log(error);
+          });
     }
     render() {
         const siteTitle = "Alonzo Alden"
@@ -106,10 +119,12 @@ class HomeIndex extends React.Component {
                     </section>
 
                     <section id="three">
-                        <h2>Get In Touch</h2>
-                        <p>If you think I could be of any help, please contact me.</p>
+                        <h2>{ this.state.showForm && 'Get In Touch' }</h2>
+                        <p>{ this.state.showForm && 'If you think I could be of any help, please contact me.' }</p>
                         <div className="row">
                             <div className="8u 12u$(small)">
+                            
+                                { this.state.showForm &&
                                 <form method="post" action="#" onSubmit={this.response}>
                                     <div className="row uniform 50%">
                                         <div className="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
@@ -122,6 +137,11 @@ class HomeIndex extends React.Component {
                                         </li>
                                     </ul>
                                 </form>
+                                }
+                                {
+                                 !this.state.showForm && 
+                                 <h2>Thanks for your submission, I'll be in touch soon.</h2>
+                                }
                             </div>
                             <div className="4u 12u$(small)">
                                 <ul className="labeled-icons">
@@ -142,6 +162,8 @@ class HomeIndex extends React.Component {
                                 </ul>
                             </div>
                         </div>
+                    
+                    
                     </section>
 
                 </div>
