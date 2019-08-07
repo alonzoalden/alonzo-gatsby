@@ -52,6 +52,13 @@ class HomeIndex extends React.Component {
         const siteTitle = "Gatsby Starter - Strata"
         const siteDescription = "Site description"
 
+
+        const response = axios.post(
+            'https://example.com',
+            { example: 'data' },
+            { headers: { 'Content-Type': 'application/json' } }
+          )
+
         return (
             <Layout>
                 <Helmet>
@@ -103,7 +110,7 @@ class HomeIndex extends React.Component {
                                     </div>
                                 </form>
                                 <ul className="actions">
-                                    <li><input type="submit" value="Send Message" /></li>
+                                    <li><input type="submit" value="Send Message" onClick="response(e)" /></li>
                                 </ul>
                             </div>
                             <div className="4u 12u$(small)">
@@ -120,7 +127,7 @@ class HomeIndex extends React.Component {
                                     </li>
                                     <li>
                                         <h3 className="icon"><FaEnvelopeOpen /><span className="label">Email</span></h3>
-                                        <a href="#">alonzoalden@gmail.com</a>
+                                        <a href="mailto:alonzoalden@gmail.com">alonzoalden@gmail.com</a>
                                     </li>
                                 </ul>
                             </div>
