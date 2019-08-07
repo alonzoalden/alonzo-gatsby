@@ -1,9 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-
+import Axios from 'axios'
 import Layout from '../components/layout'
 // import Lightbox from 'react-images'
 import Gallery from '../components/Gallery'
+
 import { FaEnvelopeOpen, FaMobileAlt } from 'react-icons/fa';
 import thumb01 from '../assets/images/thumbs/wgfs-1-small.jpeg';
 
@@ -47,17 +48,24 @@ const DEFAULT_IMAGES = [
 ];
 
 class HomeIndex extends React.Component {
-
-    render() {
-        const siteTitle = "Gatsby Starter - Strata"
-        const siteDescription = "Site description"
-
-
-        const response = axios.post(
-            'https://example.com',
-            { example: 'data' },
+    response(e) {
+        console.log(e.target.email.value);
+        e.preventDefault()
+        const data = {
+            from: e.target.email.value,
+            subject: e.target.name.value,
+            text: e.target.message.value,
+            html: e.target.message.value
+        };
+        Axios.post(
+            'https://alonzoalden.com/api/email',
+            data,
             { headers: { 'Content-Type': 'application/json' } }
-          )
+        )
+    }
+    render() {
+        const siteTitle = "Alonzo Alden"
+        const siteDescription = "Alonzo Alden Web Developer"
 
         return (
             <Layout>
@@ -102,16 +110,18 @@ class HomeIndex extends React.Component {
                         <p>If you think I could be of any help, please contact me.</p>
                         <div className="row">
                             <div className="8u 12u$(small)">
-                                <form method="post" action="#">
+                                <form method="post" action="#" onSubmit={this.response}>
                                     <div className="row uniform 50%">
                                         <div className="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
                                         <div className="6u 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
                                         <div className="12u"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
                                     </div>
+                                
+                                    <ul className="actions">
+                                        <li><input type="submit" value="Send Message" />
+                                        </li>
+                                    </ul>
                                 </form>
-                                <ul className="actions">
-                                    <li><input type="submit" value="Send Message" onClick="response(e)" /></li>
-                                </ul>
                             </div>
                             <div className="4u 12u$(small)">
                                 <ul className="labeled-icons">
