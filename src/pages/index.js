@@ -51,31 +51,106 @@ const DEFAULT_IMAGES = [
 class HomeIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {showForm: true};
+        this.state = {
+            showForm: true,
+            fields: {
+                name: '',
+                email: '',
+                message: '',
+            },
+            errors: {}
+        };
         this.response = this.response.bind(this);
       }
     
     response(e) {
         e.preventDefault()
-        const data = {
-            from: e.target.email.value,
-            subject: e.target.name.value,
-            text: e.target.message.value,
-            html: e.target.message.value
-        };
-        Axios.post(
-            'https://alonzoalden.com/api/email',
-            data,
-            { headers: { 'Content-Type': 'application/json' } }
-        )
-        .then(() => {
-            this.setState({showForm: false})
-        })
-        .catch((error) => {
-            this.setState({showForm: false})
-            console.log(error);
-          });
+        
+        if(this.handleValidation()){
+            const data = {
+                from: e.target.email.value,
+                subject: e.target.name.value,
+                text: e.target.message.value,
+                html: e.target.message.value
+            };
+            Axios.post(
+                'https://alonzoalden.com/api/email',
+                data,
+                { headers: { 'Content-Type': 'application/json' } }
+            )
+            .then(() => {
+                this.setState({showForm: false})
+            })
+            .catch((error) => {
+                this.setState({showForm: false})
+                console.log(error);
+              });
+         }else{
+            return
+         }
+ 
+
+        
     }
+    handleChange(field, e){    		
+        let fields = this.state.fields;
+        fields[field] = e.target.value;
+        this.setState({fields});
+    }
+    handleValidation(){
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsValid = true;
+
+        //Name
+        if(!fields["name"]){
+           formIsValid = false;
+           errors["name"] = "Cannot be empty";
+        }
+
+        // if(typeof fields["name"] !== "undefined"){
+        //    if(!fields["name"].match(/^[a-zA-Z]+$/)){
+        //       formIsValid = false;
+        //       errors["name"] = "Only letters";
+        //    }        
+        // }
+
+        //Message
+        if(!fields["message"]){
+            formIsValid = false;
+            errors["message"] = "Cannot be empty";
+         }
+ 
+        //  if(typeof fields["name"] !== "undefined"){
+        //     if(!fields["name"].match(/^[a-zA-Z]+$/)){
+        //        formIsValid = false;
+        //        errors["name"] = "Only letters";
+        //     }
+        //  }
+         
+
+        //Email
+        if(!fields["email"]){
+           formIsValid = false;
+           errors["email"] = "Cannot be empty";
+        }
+
+        if(typeof fields["email"] !== "undefined"){
+           let lastAtPos = fields["email"].lastIndexOf('@');
+           let lastDotPos = fields["email"].lastIndexOf('.');
+
+           if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+              formIsValid = false;
+              errors["email"] = "Email is not valid";
+            }
+       }  
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
+
+
+
     render() {
         const siteTitle = "Alonzo Alden"
         const siteDescription = "Alonzo Alden Web Developer"
@@ -125,18 +200,32 @@ class HomeIndex extends React.Component {
                             <div className="8u 12u$(small)">
                             
                                 { this.state.showForm &&
-                                <form method="post" action="#" onSubmit={this.response}>
-                                    <div className="row uniform 50%">
-                                        <div className="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
-                                        <div className="6u 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
-                                        <div className="12u"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+                                    <div>
+                                        <form method="post" action="#" onSubmit={this.response}>
+                                            <div className="row uniform contact 50%">
+                                                <div className="6u 12u$(xsmall)">
+                                                    <input ref="email" type="text" name="name" id="name" placeholder="Name" onChange={this.handleChange.bind(this, "name")} value={this.state.fields["name"]}/>
+                                                    <div className="error">{this.state.errors["name"]}</div>
+                                                </div>
+                                                
+                                                <div className="6u 12u$(xsmall)">
+                                                    <input refs="email" type="email" name="email" id="email" placeholder="Email" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}/>
+                                                    <div className="error">{this.state.errors["email"]}</div>
+                                                </div>
+                                                
+                                                <div className="12u">
+                                                    <textarea name="message" id="message" placeholder="Message" rows="4" onChange={this.handleChange.bind(this, "message")} value={this.state.fields["message"]}></textarea>
+                                                    <div className="error">{this.state.errors["message"]}</div>
+                                                </div>
+                                            </div>
+                                        
+                                        
+                                        <ul className="actions">
+                                            <li><input type="submit" value="Send Message" />
+                                            </li>
+                                        </ul>
+                                        </form>
                                     </div>
-                                
-                                    <ul className="actions">
-                                        <li><input type="submit" value="Send Message" />
-                                        </li>
-                                    </ul>
-                                </form>
                                 }
                                 {
                                  !this.state.showForm && 
