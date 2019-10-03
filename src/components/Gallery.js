@@ -35,7 +35,7 @@ class Gallery extends Component {
                             }}
                         >
                             <span >
-                                <img src={obj.thumbnail} />
+                                <img alt={obj.caption} src={obj.thumbnail} />
                             </span>
                         </a>
                     </div>

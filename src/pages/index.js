@@ -31,21 +31,20 @@ import full09 from '../assets/images/fulls/bris-biscuits-1-large.png';
 import full10 from '../assets/images/fulls/toolots-new-ui-5-large.png';
 import full11 from '../assets/images/fulls/toolots-new-ui-6-large.png';
 import full12 from '../assets/images/fulls/toolots-new-ui-7-large.png';
-import { timingSafeEqual } from 'crypto';
 
 const DEFAULT_IMAGES = [
-    { id: '1', source: full01, thumbnail: thumb01, caption: 'Photo 1', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+    { id: '1', source: full01, thumbnail: thumb01, caption: 'Photo 1', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
 
-    { id: '3', source: full03, thumbnail: thumb03, caption: 'Photo 3', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '4', source: full04, thumbnail: thumb04, caption: 'Photo 4', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '5', source: full05, thumbnail: thumb05, caption: 'Photo 5', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '6', source: full06, thumbnail: thumb06, caption: 'Photo 6', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '7', source: full07, thumbnail: thumb07, caption: 'Photo 7', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '8', source: full08, thumbnail: thumb08, caption: 'Photo 8', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '9', source: full09, thumbnail: thumb09, caption: 'Photo 9', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '9', source: full10, thumbnail: thumb10, caption: 'Photo 10', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '9', source: full11, thumbnail: thumb11, caption: 'Photo 11', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
-    { id: '9', source: full12, thumbnail: thumb12, caption: 'Photo 12', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.'},
+    { id: '3', source: full03, thumbnail: thumb03, caption: 'Photo 3', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '4', source: full04, thumbnail: thumb04, caption: 'Photo 4', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '5', source: full05, thumbnail: thumb05, caption: 'Photo 5', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '6', source: full06, thumbnail: thumb06, caption: 'Photo 6', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '7', source: full07, thumbnail: thumb07, caption: 'Photo 7', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '8', source: full08, thumbnail: thumb08, caption: 'Photo 8', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '9', source: full09, thumbnail: thumb09, caption: 'Photo 9', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '9', source: full10, thumbnail: thumb10, caption: 'Photo 10', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '9', source: full11, thumbnail: thumb11, caption: 'Photo 11', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
+    { id: '9', source: full12, thumbnail: thumb12, caption: 'Photo 12', description: 'Lorem ipsum dolor sit amet nisl sed nullam feugiat.' },
 ];
 
 class HomeIndex extends React.Component {
@@ -61,12 +60,12 @@ class HomeIndex extends React.Component {
             errors: {}
         };
         this.response = this.response.bind(this);
-      }
-    
+    }
+
     response(e) {
         e.preventDefault()
-        
-        if(this.handleValidation()){
+
+        if (this.handleValidation()) {
             const data = {
                 from: e.target.email.value,
                 subject: e.target.name.value,
@@ -78,34 +77,34 @@ class HomeIndex extends React.Component {
                 data,
                 { headers: { 'Content-Type': 'application/json' } }
             )
-            .then(() => {
-                this.setState({showForm: false})
-            })
-            .catch((error) => {
-                this.setState({showForm: false})
-                console.log(error);
-              });
-         }else{
+                .then(() => {
+                    this.setState({ showForm: false })
+                })
+                .catch((error) => {
+                    this.setState({ showForm: false })
+                    console.log(error);
+                });
+        } else {
             return
-         }
- 
+        }
 
-        
+
+
     }
-    handleChange(field, e){    		
+    handleChange(field, e) {
         let fields = this.state.fields;
         fields[field] = e.target.value;
-        this.setState({fields});
+        this.setState({ fields });
     }
-    handleValidation(){
+    handleValidation() {
         let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
 
         //Name
-        if(!fields["name"]){
-           formIsValid = false;
-           errors["name"] = "Cannot be empty";
+        if (!fields["name"]) {
+            formIsValid = false;
+            errors["name"] = "Cannot be empty";
         }
 
         // if(typeof fields["name"] !== "undefined"){
@@ -116,38 +115,38 @@ class HomeIndex extends React.Component {
         // }
 
         //Message
-        if(!fields["message"]){
+        if (!fields["message"]) {
             formIsValid = false;
             errors["message"] = "Cannot be empty";
-         }
- 
+        }
+
         //  if(typeof fields["name"] !== "undefined"){
         //     if(!fields["name"].match(/^[a-zA-Z]+$/)){
         //        formIsValid = false;
         //        errors["name"] = "Only letters";
         //     }
         //  }
-         
+
 
         //Email
-        if(!fields["email"]){
-           formIsValid = false;
-           errors["email"] = "Cannot be empty";
+        if (!fields["email"]) {
+            formIsValid = false;
+            errors["email"] = "Cannot be empty";
         }
 
-        if(typeof fields["email"] !== "undefined"){
-           let lastAtPos = fields["email"].lastIndexOf('@');
-           let lastDotPos = fields["email"].lastIndexOf('.');
+        if (typeof fields["email"] !== "undefined") {
+            let lastAtPos = fields["email"].lastIndexOf('@');
+            let lastDotPos = fields["email"].lastIndexOf('.');
 
-           if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
-              formIsValid = false;
-              errors["email"] = "Email is not valid";
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') === -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+                formIsValid = false;
+                errors["email"] = "Email is not valid";
             }
-       }  
+        }
 
-       this.setState({errors: errors});
-       return formIsValid;
-   }
+        this.setState({ errors: errors });
+        return formIsValid;
+    }
 
 
 
@@ -158,8 +157,8 @@ class HomeIndex extends React.Component {
         return (
             <Layout>
                 <Helmet>
-                        <title>{siteTitle}</title>
-                        <meta name="description" content={siteDescription} />
+                    <title>{siteTitle}</title>
+                    <meta name="description" content={siteDescription} />
                 </Helmet>
 
                 <div id="main">
@@ -169,12 +168,12 @@ class HomeIndex extends React.Component {
                             <h2>Welcome to Alonzo's Portfolio.</h2>
                         </header>
                         <p>
-                            Creation is my passion and I express it through code. 
+                            Creation is my passion and I express it through code.
                             I enjoy working on all aspects of web development from small business sites to large scale interactive web applications. I have experience with some of the latest dev tech, including React, Angular, Node.JS, PostgreSQL.
                             If you believe I can be of any further assistance, please feel free to contact me.
                         </p>
                         <ul className="actions">
-                            <li><a href="#" className="button">Learn More</a></li>
+                            <li><a href="https://alonzoalden.com" rel="noopener noreferrer" target="_blank" className="button">Learn More</a></li>
                         </ul>
                     </section>
 
@@ -189,47 +188,47 @@ class HomeIndex extends React.Component {
                         }))} />
 
                         <ul className="actions">
-                            <li><a href="#" className="button">Full Portfolio</a></li>
+                            <li><a href="https://github.com/alonzoalden" rel="noopener noreferrer" target="_blank" className="button">Full Portfolio</a></li>
                         </ul>
                     </section>
 
                     <section id="three">
-                        <h2>{ this.state.showForm && 'Get In Touch' }</h2>
-                        <p>{ this.state.showForm && 'If you think I could be of any help, please contact me.' }</p>
+                        <h2>{this.state.showForm && 'Get In Touch'}</h2>
+                        <p>{this.state.showForm && 'If you think I could be of any help, please contact me.'}</p>
                         <div className="row">
                             <div className="8u 12u$(small)">
-                            
-                                { this.state.showForm &&
+
+                                {this.state.showForm &&
                                     <div>
                                         <form method="post" action="#" onSubmit={this.response}>
                                             <div className="row uniform contact 50%">
                                                 <div className="6u 12u$(xsmall)">
-                                                    <input ref="email" type="text" name="name" id="name" placeholder="Name" onChange={this.handleChange.bind(this, "name")} value={this.state.fields["name"]}/>
+                                                    <input ref="email" type="text" name="name" id="name" placeholder="Name" onChange={this.handleChange.bind(this, "name")} value={this.state.fields["name"]} />
                                                     <div className="error">{this.state.errors["name"]}</div>
                                                 </div>
-                                                
+
                                                 <div className="6u 12u$(xsmall)">
-                                                    <input refs="email" type="email" name="email" id="email" placeholder="Email" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}/>
+                                                    <input refs="email" type="email" name="email" id="email" placeholder="Email" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]} />
                                                     <div className="error">{this.state.errors["email"]}</div>
                                                 </div>
-                                                
+
                                                 <div className="12u">
                                                     <textarea name="message" id="message" placeholder="Message" rows="4" onChange={this.handleChange.bind(this, "message")} value={this.state.fields["message"]}></textarea>
                                                     <div className="error">{this.state.errors["message"]}</div>
                                                 </div>
                                             </div>
-                                        
-                                        
-                                        <ul className="actions">
-                                            <li><input type="submit" value="Send Message" />
-                                            </li>
-                                        </ul>
+
+
+                                            <ul className="actions">
+                                                <li><input type="submit" value="Send Message" />
+                                                </li>
+                                            </ul>
                                         </form>
                                     </div>
                                 }
                                 {
-                                 !this.state.showForm && 
-                                 <h2>Thanks for your submission, I'll be in touch soon.</h2>
+                                    !this.state.showForm &&
+                                    <h2>Thanks for your submission, I'll be in touch soon.</h2>
                                 }
                             </div>
                             <div className="4u 12u$(small)">
@@ -251,8 +250,8 @@ class HomeIndex extends React.Component {
                                 </ul>
                             </div>
                         </div>
-                    
-                    
+
+
                     </section>
 
                 </div>
