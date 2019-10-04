@@ -165,7 +165,7 @@ class HomeIndex extends React.Component {
 
                     <section id="one">
                         <header className="major">
-                            <h2>Welcome to Alonzo's Portfolio.</h2>
+                            <h2>Thanks for stopping by.</h2>
                         </header>
                         <p>
                             Creation is my passion and I express it through code.
